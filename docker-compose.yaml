@@ -1,0 +1,27 @@
+version: '2'
+services:
+  mysql:
+    container_name: v-mysql
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    restart: always
+  demo:
+    container_name: v-laws
+    image: registry.cn-qingdao.aliyuncs.com/laws123/laws
+    #restart: always
+    #build: ./demo
+    #working_dir: /app
+    #volumes:
+     # - ./demo:/app
+     # - ~/.m2:/root/.m2
+    expose:
+      - 8080
+    depends_on:
+      - mysql
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+
