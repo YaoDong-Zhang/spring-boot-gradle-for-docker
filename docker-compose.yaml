@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: '%'
     ports:
-      - "3306:3306"
+      - "8091:3306"
     restart: always
   demo:
     container_name: v-laws
