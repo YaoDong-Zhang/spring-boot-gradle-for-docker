@@ -20,7 +20,7 @@ apply plugin: 'application'
 /*apply plugin: 'docker'*/
 apply plugin: 'com.palantir.docker'
 
-group = 'io.ostenant.springboot.sample'
+group = 'laws'
 version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -46,7 +46,8 @@ jar {
 
 docker {
     //name "${project.group}/${jar.baseName}"
-    name 'registry.cn-qingdao.aliyuncs.com/laws123/laws'
+    name "registry.cn-qingdao.aliyuncs.com/laws123/laws:${jar.version}"
+  // name 'registry.cn-qingdao.aliyuncs.com/laws123/laws'
     files jar.archivePath
     buildArgs(['JAR_FILE': "${jar.archiveName}"])
 }
